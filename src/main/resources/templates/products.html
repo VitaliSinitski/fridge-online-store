@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}"/>
+
+</head>
+<body>
+
+<div th:include="products/header.html"></div>
+<div th:include="filter.html"></div>
+
+<div th:if="${message}" class="alert alert-danger" style="color: red">
+    <span th:text="${message}"></span>
+</div>
+
+<br>
+<div class="product-grid">
+    <div class="product-items" th:each="product : ${page.content}">
+        <div class="product">
+            <div th:if="${product.image}" class="product-image">
+                <img th:src="@{/api/v1/products/{id}/image(id=${product.id})}" alt="Image" height="200">
+            </div>
+            <div class="product-info">
+                <div class="product-name" th:text="${product.name}"></div>
+                <div class="product-description" th:text="${product.description}"></div>
+                <div class="product-price" th:text="${product.price}"></div>
+
+                <div class="product-action">
+                    <a th:href="@{/products/{id}(id=${product.id})}" class="btn btn-primary" role="button" th:text="#{products.show}">Show</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="pagination.html"></div>
+
+<footer th:replace="footer :: footer"></footer>
+
+</body>
+</html>

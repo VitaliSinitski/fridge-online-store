@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/order.css}">
+</head>
+<body>
+<div th:include="header.html"></div>
+<div class="container">
+    <h1 th:text="#{orderFinish.h1}">Thank you for your order!</h1>
+    <p th:text="#{orderFinish.details}">Our manager will call you soon to confirm the details.</p>
+    <p th:text="#{orderFinish.orderNumber}">Your order number is: </p>
+    <h3 th:text="${orderId}"></h3>
+    <br>
+    <h2 th:text="#{orderFinish.h2orderDetails}">Order Details</h2>
+    <table>
+        <tr>
+            <th th:text="#{order.productName}">Product Name</th>
+            <th th:text="#{order.productQuantity}">Quantity</th>
+            <th th:text="#{order.productPrice}">Price</th>
+            <th th:text="#{order.productTotal}">Total</th>
+        </tr>
+        <tr th:each="orderItem : ${orderItems}">
+            <td th:text="${orderItem.product.name}"></td>
+            <td th:text="${orderItem.quantity}"></td>
+            <td th:text="${orderItem.product.price}"></td>
+            <td th:text="${orderItem.product.price * orderItem.quantity}"></td>
+        </tr>
+    </table>
+    <br>
+    <h2 th:text="#{order.productTotalPrice}">Total Price</h2>
+    <table>
+        <tr>
+            <td th:text="${totalPrice}" style="color: darkred"></td>
+        </tr>
+    </table>
+    <br>
+    <h2 th:text="#{order.userInformation}">User Information</h2>
+    <table>
+        <tr>
+            <td th:text="#{userInformation.firstName}">Firstname:</td>
+            <td th:text="${userInformation.firstName}"></td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.lastName}">Lastname:</td>
+            <td th:text="${userInformation.lastName}"></td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.phone}">Phone number:</td>
+            <td th:text="${userInformation.phone}"></td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.address}">Address:</td>
+            <td th:text="${userInformation.address}"></td>
+        </tr>
+    </table>
+    <h3 th:text="#{order.inform}">Additional Information</h3>
+    <table>
+        <tr>
+            <td th:text="${order.inform}"></td>
+        </tr>
+    </table>
+    <h3 th:text="#{order.status}">Order status</h3>
+    <table>
+        <tr>
+            <td th:text="${order.orderStatus}"></td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>
