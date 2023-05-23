@@ -1,0 +1,116 @@
+/*nav {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 200px;*/
+/*    height: 100%;*/
+/*    background-color: #f2f2f2;*/
+/*    padding: 20px;*/
+/*    overflow-y: scroll;*/
+/*}*/
+
+/*nav {*/
+/*    !*position: fixed;*!*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 200px;*/
+/*    height: 100%;*/
+/*    background-color: #f2f2f2;*/
+/*    padding: 20px;*/
+/*    overflow-y: scroll;*/
+/*    display: flex;*/
+/*    flex-direction: column; !* add this line *!*/
+/*}*/
+
+.menu-nav {
+    position: absolute;
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    overflow-y: scroll;
+    z-index: 1;
+}
+
+
+
+
+/*.menu {*/
+/*    !*position: relative;*!*/
+/*    float: left;*/
+/*}*/
+
+.menu-nav  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.menu-nav  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+}
+
+.menu-nav  ul li ul li {
+    opacity: 1;
+}
+
+
+/* new */
+/*nav ul ul {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 0;*/
+/*    background-color: #fff;*/
+/*    z-index: 2;*/
+/*}*/
+
+/*nav ul ul li {*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*}*/
+/*   */
+
+.menu-nav  li {
+    margin-bottom: 10px;
+    display: block; /* Add this */
+}
+
+/*nav input[type="checkbox"] {*/
+/*    display: none;*/
+/*}*/
+
+.menu-nav  label {
+    font-size: 16px;
+    font-weight: normal;
+    cursor: pointer;
+    display: block; /* New */
+}
+
+
+/*nav input[type="checkbox"]:checked + label {*/
+/*    font-weight: bold;*/
+/*}*/
+
+.menu {
+    /*position: fixed;*/
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    overflow-y: scroll;
+    z-index: 2;
+}
+
+/*Replace all nav with menu-nav*/

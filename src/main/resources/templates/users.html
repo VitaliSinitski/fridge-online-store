@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link th:href="@{/css/user.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:include="admin/header.html"></div>
+<table>
+    <thead>
+    <tr>
+        <th th:text="#{id}">User ID</th>
+        <th th:text="#{user.username}">Username</th>
+        <th th:text="#{user.email}">Email</th>
+        <th th:text="#{user.role}">Role</th>
+        <th th:text="#{userInformation.firstName}">Firstname</th>
+        <th th:text="#{userInformation.lastName}">Lastname</th>
+        <th th:text="#{userInformation.phone}">Phone</th>
+        <th th:text="#{userInformation.address}">Address</th>
+        <th th:text="#{userInformation.birthDate}">Birthdate</th>
+        <th th:text="#{user.enabled}">Enabled</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.role}"></td>
+        <td th:text="${user.userInformation.firstName}"></td>
+        <td th:text="${user.userInformation.lastName}"></td>
+        <td th:text="${user.userInformation.phone}"></td>
+        <td th:text="${user.userInformation.address}"></td>
+        <td th:text="${user.userInformation.birthDate}"></td>
+        <td th:text="${user.enabled} ? 'True' : 'False'"></td>
+        <td>
+            <a th:href="@{/users/{id}(id=${user.id})}" th:text="#{user.moreInfo}">More info</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

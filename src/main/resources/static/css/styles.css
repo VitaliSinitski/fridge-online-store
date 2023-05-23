@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    /*font-family: Helvetica, sans-serif;*/
+    /*font-family: Amazon Ember, sans-serif;*/
+}
+
+.container {
+    /*display: flex; !*   new added   *!*/
+    margin: 0 auto;
+    max-width: 1000px; /* changed to make room for the menu */
+    padding: 0 15px;
+    margin-left: 220px; /* added to make room for the menu */
+    margin-bottom: 2rem; /*  maybe ok  */
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+.product-grid {
+    /*width: 80%;  !*   new added   *!*/
+    /*left: 100px;*/
+    margin-left: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*.product-items {*/
+/*    flex-basis: calc(100% / 5 - 20px);*/
+/*    margin: 10px;*/
+/*    text-align: center;*/
+/*}*/
+
+.product-items {
+    flex-basis: calc(100% / 5 - 20px);
+    margin: 10px;
+    text-align: center;
+    min-height: 500px;
+    max-height: 500px;
+    min-width: 200px; /* set a fixed width */
+    max-width: 200px; /* set a fixed width */
+}
+
+
+.product {
+    box-shadow: 0px 0px 10px #888888;
+    margin-bottom: 20px;
+    overflow: hidden;
+    min-height: 500px;
+    max-height: 500px;
+    min-width: 200px; /* set a fixed width */
+    max-width: 200px; /* set a fixed width */
+}
+
+.product-image {
+    margin: 10px 5px;
+    height: 250px;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-action {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.pagination .page {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.pagination button {
+    font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #555;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination button[aria-label="Previous"]::before {
+    content: '\2190\0020';
+}
+
+.pagination button[aria-label="Next"]::after {
+    content: '\0020\2192';
+}
+
+button {
+    background-color:  #232f3e;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #334868;
+}

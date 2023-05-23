@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Order confirm</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}">
+</head>
+<body>
+<div th:include="header.html"></div>
+<h1>Shopping Cart</h1>
+<form th:action="@{/order/confirm}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>Product Name</th>
+            <th>Product description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${orderItems}">
+            <td>
+                <div th:if="${item.product.image}" class="product-image">
+                    <img th:src="@{/api/v1/products/{id}/image(id=${item.product.id})}" alt="image" height="50">
+                </div>
+            </td>
+            <td th:text="${item.product.name}"></td>
+            <td th:text="${item.product.description}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td th:text="${item.product.price}"></td>
+            <td>
+                <input type="hidden" name="cartId" th:value="${session.cartId}">
+                <input type="hidden" name="orderStatus" value="PENDING">
+            </td>
+        </tr>
+        </tbody>
+        <tbody>
+        </tbody>
+    </table>
+    <form th:each="userInfo : ${session.userInformation}">
+        <label>
+            <input name="firstName" th:value="${userInfo.firstName}">
+        </label>
+    </form>
+    <button type="submit">Make order</button>
+</form>
+</body>
+</html>

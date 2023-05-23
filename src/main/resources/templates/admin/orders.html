@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/order.css}">
+</head>
+<body>
+<div th:include="admin/header.html"></div>
+<div></div>
+<table>
+    <thead>
+    <tr>
+        <th th:text="#{id}">ID</th>
+        <th th:text="#{userInformation.firstName}">First Name</th>
+        <th th:text="#{userInformation.lastName}">Last Name</th>
+        <th th:text="#{order.status}">Order status</th>
+        <th th:text="#{order.createdDate}">Created date</th>
+        <th th:text="#{order.updatedDate}">Updated date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.user.userInformation.firstName}"></td>
+        <td th:text="${order.user.userInformation.lastName}"></td>
+        <td th:text="${order.orderStatus}"></td>
+        <td th:text="${order.createdDate}"></td>
+        <td th:text="${order.updatedDate}"></td>
+        <td>
+            <a th:href="@{/admin/orders/{id}(id=${order.id})}" th:text="#{order.view}">View</a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${product.name}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/product.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}"/>
+</head>
+<body>
+<div th:include="header.html"></div>
+
+<div th:if="${product != null}" class="product-container">
+    <div class="product-details">
+        <form method="post" th:action="@{/cart/add}">
+            <div th:if="${product.image}" class="product-details-image">
+                <img th:src="@{/api/v1/products/{id}/image(id=${product.id})}" alt="Image" height="350">
+            </div>
+
+            <div class="product-details-info">
+                <div class="product-details-name" th:text="${product.name}"></div>
+                <br>
+                <div class="product-details-description" th:text="${product.description}"></div>
+                <br>
+                <div class="product-details-price" th:text="${product.price}"></div>
+                <br>
+                <div class="product-details-category" th:text="${product.category.name}"></div>
+                <br>
+
+                <div th:if="${message}" class="alert alert-danger" style="color: red">
+                    <span th:text="${message}"></span>
+                </div>
+                <br><br>
+                <div sec:authorize="!hasAuthority('ADMIN')" class="product-details-quantity">
+
+                    <div th:if="${product.quantity > 0}">
+                        <label for="quantity" th:text="#{product.quantity}">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                        <button type="submit" class="product-add-to-cart" th:text="#{product.addToCart}">Add to cart</button>
+                    </div>
+                    <div th:if="${product.quantity <= 0}">
+                        <span style="color: red" th:text="#{product.OutOfStock}">Current product is out of stock.</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div th:include="/footer"></div>
+</body>
+</html>

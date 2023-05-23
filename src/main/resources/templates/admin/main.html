@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:include="admin/header.html"></div>
+
+<div class="login-container">
+    <form th:action="@{/admin/orders}" class="login-form">
+        <h2 class="login-header" th:text="#{adminMain.header}">Admin page</h2>
+        <button class="login-submit" type="submit" th:text="#{adminMain.orders}">Orders</button>
+    </form><br>
+    <form th:action="@{/admin/products}" class="login-form">
+        <button class="login-submit" type="submit" th:text="#{adminMain.products}">Products</button>
+    </form><br>
+    <form th:action="@{/admin/products/new}" class="login-form">
+        <button class="login-submit" type="submit" th:text="#{adminMain.newProduct}">Add new product</button>
+    </form><br>
+    <form th:action="@{/users}" class="login-form">
+        <button class="login-submit" type="submit" th:text="#{adminMain.users}">Users</button>
+    </form><br>
+    <form th:action="@{/users-rest.html}" class="login-form">
+        <button class="login-submit" type="submit" th:text="#{adminMain.usersRest}">Users-rest</button>
+    </form>
+</div>
+</body>
+</html>

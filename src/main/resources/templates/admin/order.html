@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link th:href="@{/css/user.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:include="admin/header.html"></div>
+
+<div>
+    <table th:object="${userInformation}">
+        <thead>
+        <tr>
+            <th colspan="2" th:text="#{user.userInformation}">User Information</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="#{userInformation.firstName}">First name:</td>
+            <td>
+                <span th:text="*{firstName}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.lastName}">Last name:</td>
+            <td>
+                <span th:text="*{lastName}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.birthDate}">Birth date:</td>
+            <td>
+                <span th:text="*{birthDate}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.phone}">Phone:</td>
+            <td>
+                <span th:text="*{phone}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{userInformation.address}">Address:</td>
+            <td>
+                <span th:text="*{address}"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th colspan="4" th:text="#{orderItem.details}">Order item details</th>
+        </tr>
+        <tr>
+            <th th:text="#{orderItem.id}">Id</th>
+            <th th:text="#{order.product}">Product</th>
+            <th th:text="#{order.productPrice}">Price</th>
+            <th th:text="#{order.productQuantity}">Quantity</th>
+        </tr>
+        </thead>
+        <tbody th:each="item : ${order.orderItems}">
+        <tr>
+            <td>
+                <span th:text="${item.id}"/>
+            </td>
+            <td>
+                <span th:text="${item.product.name}"/>
+            </td>
+            <td>
+                <span th:text="${item.product.price}"/>
+            </td>
+            <td>
+                <span th:text="${item.quantity}"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th colspan="2" th:text="#{order.productTotalPrice}">Total price</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span th:text="${totalPrice}"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<form th:action="@{/admin/orders/{orderId}/update(orderId=${order.id})}" method="post" th:object="${order}">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="2" th:text="#{order.details}">Order Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="#{id}">Order id:</td>
+            <td>
+                <span th:text="*{id}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{order.createdDate}">Created date:</td>
+            <td>
+                <span th:text="*{createdDate}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{order.updatedDate}">Updated date:</td>
+            <td>
+                <span th:text="*{updatedDate}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{order.orderInformation}">Order information:</td>
+            <td>
+                <span th:text="*{inform}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{order.status}">Order status:</td>
+            <td>
+                <label for="orderStatus">
+                    <select name="orderStatus" id="orderStatus">
+                        <option th:each="orderStatus : ${orderStatuses}"
+                                th:text="${orderStatus.name()}"
+                                th:value="${orderStatus}"
+                                th:selected="${orderStatus == order.orderStatus}">
+                            Status
+                        </option>
+                    </select>
+                </label>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="submit" th:text="#{order.update}">Update</button>
+</form>
+<br>
+
+</body>
+</html>
