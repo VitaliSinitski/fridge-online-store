@@ -3,9 +3,13 @@ spring:
 #  main:
 #    allow-circular-references: true
 
+# src/main/resources/application.yaml
+
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/fridge-store?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql-container:3306/fridge-store?createDatabaseIfNotExist=true
+#    url: jdbc:mysql://localhost:3306/fridge-store?createDatabaseIfNotExist=true
     username: root
     password: root
 
@@ -27,7 +31,7 @@ spring:
 
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
-    enabled: false
+    enabled: true
 
   messages:
 #    basename: messages
@@ -40,9 +44,9 @@ spring:
 #    locale: ru, en
     locale: en
 
-
-server:
-  port: 8081
+#
+#server:
+#  port: 8081
 
 logging:
   level:

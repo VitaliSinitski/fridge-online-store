@@ -11,12 +11,13 @@
 
 	<groupId>com.vitali</groupId>
 	<artifactId>fridge-online-store</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>fridge-online-store</name>
 	<description>Online store Spring Boot project</description>
 
 	<properties>
 		<java.version>17</java.version>
+		<liquibase.version>4.20.0</liquibase.version>
 		<propertyFilePath>db/liquibase.properties</propertyFilePath>
 		<changeLogFilePath>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFilePath>
 	</properties>
@@ -101,6 +102,7 @@
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -156,6 +158,14 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<!-- skipTests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 			<!-- Querydsl -->

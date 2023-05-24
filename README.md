@@ -24,6 +24,7 @@ This is my own project.
 * Java 
 * Spring (Boot, Security, Data, Aop, Logging)
 * REST API
+* Docker
 * MySQL, H2
 * Liquibase
 * Lombok
@@ -39,4 +40,6 @@ This is my own project.
 <hr>
 The database tables are created using Liquibase. 
 For testing, I'm using an H2 database.
-<br>
+<hr>
+At the end, I created a Docker image of my Spring Boot application and ran it as a Docker container.
+<hr>
